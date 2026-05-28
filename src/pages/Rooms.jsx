@@ -1,3 +1,4 @@
+import React from "react";
 import ReservationForm from "../components/ReservationForm.jsx";
 import RoomCard from "../components/RoomCard.jsx";
 import { rooms } from "../data/rooms.js";
@@ -7,10 +8,10 @@ export default function Rooms() {
     <>
       <section className="page-heading">
         <p className="eyebrow">Quartos</p>
-        <h1>Quartos simples para descanso, pernoite e viagens de passagem.</h1>
+        <h1>Quartos simples, arejados e limpos para descanso em Taperoá.</h1>
         <p>
-          Todos os quartos estão marcados como disponíveis. A confirmação final
-          é feita diretamente pelo atendimento da pousada no WhatsApp.
+          A confirmação final é feita diretamente pelo atendimento da pousada.
+          Todos os quartos estão configurados como disponíveis para pré-reserva.
         </p>
       </section>
 
@@ -26,7 +27,7 @@ export default function Rooms() {
           <h2>Escolha um quarto ou solicite a melhor opção disponível.</h2>
           <p>
             A equipe confirma o quarto conforme o período, o número de pessoas
-            e a necessidade de cada hóspede.
+            e a necessidade de cada hóspede ou empresa.
           </p>
         </div>
         <ReservationForm />

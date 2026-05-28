@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import React from "react";
 import ReservationForm from "../components/ReservationForm.jsx";
 
 const WHATSAPP_DIRECT = "https://wa.me/5583998710819";
@@ -13,9 +14,8 @@ export default function Contact() {
         <p className="eyebrow">Contato</p>
         <h1>Fale diretamente com a Pousada Santo Inácio.</h1>
         <p>
-          Para reservas, dúvidas ou confirmação de disponibilidade, entre em
-          contato pelo WhatsApp. O atendimento confirma o quarto disponível e os
-          detalhes da hospedagem.
+          Para reservas, dúvidas, hospedagem de equipes ou confirmação de
+          disponibilidade, entre em contato pelo WhatsApp.
         </p>
       </section>
 
@@ -33,16 +33,21 @@ export default function Contact() {
             </div>
             <div>
               <dt>Atendimento</dt>
-              <dd>Atendimento 24h, mediante confirmação pelo WhatsApp</dd>
+              <dd>Atendimento direto, mediante confirmação pelo WhatsApp</dd>
+            </div>
+            <div>
+              <dt>CNPJ</dt>
+              <dd>Disponível no atendimento</dd>
             </div>
           </dl>
           <a className="primary-button full" href={WHATSAPP_DIRECT} target="_blank" rel="noreferrer">
+            <span className="button-icon" aria-hidden="true">☎</span>
             Abrir WhatsApp
           </a>
         </div>
 
         <div className="contact-form-wrap">
-          <h2>Reservar pelo WhatsApp</h2>
+          <h2>Pré-reserva pelo WhatsApp</h2>
           <ReservationForm selectedRoom={selectedRoom} />
         </div>
       </section>

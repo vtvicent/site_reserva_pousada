@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React from "react";
 import ReservationForm from "../components/ReservationForm.jsx";
 
 export default function Home() {
@@ -7,14 +8,21 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <div className="hero-copy">
-            <p className="eyebrow">Taperoá - Paraíba</p>
-            <h1>Pousada Santo Inácio</h1>
+            <div className="hero-brand-title" aria-label="Pousada Santo Inácio">
+              <span className="halo-mark" aria-hidden="true" />
+              <span className="brand-kicker">Pousada</span>
+              <span className="brand-main">Santo Inácio</span>
+              <span className="brand-location">Taperoá - Paraíba</span>
+              <span className="brand-subtitle">Comodidade e preço baixo 24h pertinho de você.</span>
+            </div>
             <p>
-              Hospedagem prática para quem está em trânsito, com atendimento direto,
-              localização estratégica em posto de combustível e reserva rápida pelo WhatsApp.
+              Uma opção prática para viajantes em trânsito, caminhoneiros,
+              trabalhadores regionais e equipes terceirizadas que precisam de
+              descanso limpo, localização estratégica e atendimento ágil.
             </p>
             <div className="hero-actions">
               <a className="primary-button" href="#reserva">
+                <span className="button-icon" aria-hidden="true">☎</span>
                 Reservar pelo WhatsApp
               </a>
               <Link className="text-button" to="/quartos">
@@ -22,8 +30,8 @@ export default function Home() {
               </Link>
             </div>
             <div className="hero-badges" aria-label="Diferenciais da pousada">
-              <span>Atendimento 24h</span>
-              <span>11 quartos</span>
+              <span>Atendimento direto com o proprietário</span>
+              <span>Localização em posto de combustível</span>
             </div>
           </div>
         </div>
@@ -31,26 +39,36 @@ export default function Home() {
 
       <section className="quick-info" aria-label="Informações rápidas">
         <div>
-          <strong>11 quartos</strong>
-          <span>Estrutura objetiva para descanso e pernoite.</span>
+          <span className="info-icon" aria-hidden="true">◷</span>
+          <strong>Check-in flexível</strong>
+          <span>Praticidade para quem chega da estrada em horários variados.</span>
         </div>
         <div>
-          <strong>Localização prática</strong>
-          <span>Situada em posto de combustível em Taperoá - PB.</span>
+          <span className="info-icon" aria-hidden="true">▰</span>
+          <strong>Estacionamento amplo</strong>
+          <span>Localização conveniente em posto, com acesso fácil para veículos grandes.</span>
         </div>
+      </section>
+
+      <section className="business-band">
         <div>
-          <strong>Reserva direta</strong>
-          <span>Atendimento rápido pelo WhatsApp da pousada.</span>
+          <p className="eyebrow">Para empresas</p>
+          <h2>Hospedagem para equipes terceirizadas e contratos recorrentes.</h2>
         </div>
+        <p>
+          Atendemos trabalhadores em deslocamento, equipes de obras, prestadores
+          de serviço e empresas que precisam de hospedagem simples, previsível e
+          com atendimento direto.
+        </p>
       </section>
 
       <section id="reserva" className="content-band two-columns">
         <div>
-          <p className="eyebrow">Reserva rápida</p>
-          <h2>Informe os dados da hospedagem e aguarde a confirmação.</h2>
+          <p className="eyebrow">Pré-reserva rápida</p>
+          <h2>Envie os dados da hospedagem pelo WhatsApp.</h2>
           <p>
             Ao enviar o formulário, o WhatsApp será aberto com uma mensagem pronta
-            para a pousada confirmar a disponibilidade e finalizar o atendimento.
+            para a pousada confirmar disponibilidade, valores e condições.
           </p>
         </div>
         <ReservationForm />

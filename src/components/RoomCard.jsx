@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
 export default function RoomCard({ room }) {
   return (
@@ -9,7 +10,15 @@ export default function RoomCard({ room }) {
       </div>
       <h3>{room.name}</h3>
       <p>{room.description}</p>
-      <span className="capacity">Até {room.capacity} pessoa{room.capacity > 1 ? "s" : ""}</span>
+      <div className="room-meta">
+        <span>{room.bedType}</span>
+        <span>Até {room.capacity} pessoa{room.capacity > 1 ? "s" : ""}</span>
+      </div>
+      <div className="room-price">
+        <span>Diária</span>
+        <strong>{room.price}</strong>
+      </div>
+      <strong className="room-tag">{room.tag}</strong>
       <Link className="secondary-button" to={`/contato?quarto=${room.id}`}>
         Reservar este quarto
       </Link>

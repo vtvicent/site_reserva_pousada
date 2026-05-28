@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { rooms } from "../data/rooms.js";
 
 const WHATSAPP_NUMBER = "5583998710819";
@@ -9,6 +9,7 @@ const initialForm = {
   checkOut: "",
   guests: "1",
   room: "",
+  message: "",
 };
 
 function formatDate(value) {
@@ -19,16 +20,21 @@ function formatDate(value) {
 
 function buildMessage(form) {
   return [
-    "Olá, gostaria de fazer uma reserva na Pousada Santo Inácio:",
+    "Olá! Tudo bem?",
+    "Gostaria de fazer uma pré-reserva na Pousada Santo Inácio.",
     "",
     `Nome: ${form.name || "Não informado"}`,
     `Entrada: ${formatDate(form.checkIn) || "Não informada"}`,
     `Saída: ${formatDate(form.checkOut) || "Não informada"}`,
     `Pessoas: ${form.guests || "Não informado"}`,
     `Quarto: ${form.room || "A combinar"}`,
+    `Mensagem: ${form.message || "Tenho interesse em confirmar a disponibilidade para esse período."}`,
     "",
-    "Aguardo confirmação.",
-  ].join("\n");
+    "Fico no aguardo da confirmação.",
+    "Muito obrigado pela atenção!",
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 export default function ReservationForm({ selectedRoom = "" }) {
@@ -66,43 +72,20 @@ export default function ReservationForm({ selectedRoom = "" }) {
 
       <div className="form-grid">
         <div className="form-row">
-          <label htmlFor="checkIn">Data de entrada</label>
-          <input
-            id="checkIn"
-            name="checkIn"
-            type="date"
-            value={form.checkIn}
-            onChange={handleChange}
-            required
-          />
+          <label htmlFor="checkIn">Check-in</label>
+          <input id="checkIn" name="checkIn" type="date" value={form.checkIn} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
-          <label htmlFor="checkOut">Data de saída</label>
-          <input
-            id="checkOut"
-            name="checkOut"
-            type="date"
-            value={form.checkOut}
-            onChange={handleChange}
-            required
-          />
+          <label htmlFor="checkOut">Check-out</label>
+          <input id="checkOut" name="checkOut" type="date" value={form.checkOut} onChange={handleChange} required />
         </div>
       </div>
 
       <div className="form-grid">
         <div className="form-row">
           <label htmlFor="guests">Número de pessoas</label>
-          <input
-            id="guests"
-            name="guests"
-            type="number"
-            min="1"
-            max="6"
-            value={form.guests}
-            onChange={handleChange}
-            required
-          />
+          <input id="guests" name="guests" type="number" min="1" max="6" value={form.guests} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
@@ -118,7 +101,20 @@ export default function ReservationForm({ selectedRoom = "" }) {
         </div>
       </div>
 
+      <div className="form-row">
+        <label htmlFor="message">Mensagem rápida</label>
+        <textarea
+          id="message"
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          placeholder="Ex.: Chego à noite, preciso de quarto para equipe."
+          rows="3"
+        />
+      </div>
+
       <button className="primary-button full" type="submit">
+        <span className="button-icon" aria-hidden="true">☎</span>
         Reservar agora pelo WhatsApp
       </button>
     </form>
