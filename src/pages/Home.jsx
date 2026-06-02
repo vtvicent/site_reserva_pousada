@@ -86,14 +86,14 @@ export default function Home() {
         </div>
 
         <div className="location-grid">
-          <div className="map-card">
-            <iframe
-              title="Mapa da Pousada Santo Inácio em Taperoá-PB"
-              src="https://www.google.com/maps?q=Pousada%20Santo%20In%C3%A1cio%20Tapero%C3%A1%20PB&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
+          <div className="map-card location-map-fallback">
+            <div className="map-pin" aria-hidden="true">⌖</div>
+            <h3>Pousada Santo Inácio</h3>
+            <p>Posto de combustível em Taperoá - PB</p>
+            <span>Toque no botão abaixo para abrir a rota no Google Maps.</span>
+            <a className="primary-button" href={MAP_LINK} target="_blank" rel="noreferrer">
+              Abrir Rota no Google Maps
+            </a>
           </div>
 
           <div className="location-copy glass-panel">
