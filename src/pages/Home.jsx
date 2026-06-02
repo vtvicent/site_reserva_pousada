@@ -78,7 +78,7 @@ export default function Home() {
         <ReservationForm />
       </section>
 
-      <section className="location-tourism-section">
+      <section id="localizacao" className="location-tourism-section">
         <div className="section-heading">
           <p className="eyebrow">Localização e conheça Taperoá</p>
           <h2>Onde Estamos</h2>

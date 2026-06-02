@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Rooms from "./pages/Rooms.jsx";
 import About from "./pages/About.jsx";
@@ -8,9 +8,25 @@ import Contact from "./pages/Contact.jsx";
 const navItems = [
   { to: "/", label: "Início" },
   { to: "/quartos", label: "Quartos" },
+  { to: "/#localizacao", label: "Localização da Pousada" },
   { to: "/sobre", label: "Sobre" },
   { to: "/contato", label: "Contato" },
 ];
+
+function ScrollToHash() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+
+    const element = document.querySelector(hash);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [hash]);
+
+  return null;
+}
 
 function getInitialTheme() {
   const savedTheme = window.localStorage.getItem("site-theme");
@@ -76,6 +92,7 @@ export default function App() {
       </header>
 
       <main>
+        <ScrollToHash />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quartos" element={<Rooms />} />
