@@ -9,7 +9,14 @@ export const rooms = Array.from({ length: 11 }, (_, index) => {
     status: "disponivel",
     capacity,
     price: capacity === 1 ? "R$ 50,00" : capacity === 2 ? "R$ 80,00" : "Sob consulta",
-    bedType: number === "07" ? "3 camas de solteiro" : isSingle ? "1 cama de solteiro" : index % 2 === 0 ? "2 camas de solteiro" : "1 cama de casal",
+    bedType:
+      number === "07"
+        ? "3 camas de solteiro"
+        : isSingle
+          ? "1 cama de solteiro"
+          : index % 2 === 0
+            ? "2 camas de solteiro"
+            : "1 cama de casal",
     tag: index % 2 === 0 ? "Ideal para caminhoneiros" : "Contrato comercial disponível",
     description: isSingle
       ? "Quarto simples, arejado e limpo para pernoite individual."

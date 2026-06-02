@@ -15,6 +15,24 @@ export default function Rooms() {
         </p>
       </section>
 
+      <section className="rooms-summary" aria-label="Resumo dos valores">
+        <div>
+          <span>Individual</span>
+          <strong>R$ 50,00</strong>
+          <small>Quarto de solteiro</small>
+        </div>
+        <div>
+          <span>Casal ou 2 pessoas</span>
+          <strong>R$ 80,00</strong>
+          <small>Conforme disponibilidade</small>
+        </div>
+        <div>
+          <span>Quarto 07</span>
+          <strong>Sob consulta</strong>
+          <small>Capacidade para até 3 pessoas</small>
+        </div>
+      </section>
+
       <section className="rooms-grid">
         {rooms.map((room) => (
           <RoomCard key={room.id} room={room} />
