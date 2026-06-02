@@ -5,6 +5,9 @@ import Rooms from "./pages/Rooms.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 
+const FLOATING_WHATSAPP_LINK =
+  "https://wa.me/5583998710819?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20falar%20com%20a%20Pousada%20Santo%20In%C3%A1cio%20sobre%20hospedagem.";
+
 const navItems = [
   { to: "/", label: "Início" },
   { to: "/quartos", label: "Quartos" },
@@ -112,6 +115,17 @@ export default function App() {
           <span>CNPJ: disponível no atendimento</span>
         </div>
       </footer>
+
+      <a
+        className="floating-whatsapp"
+        href={FLOATING_WHATSAPP_LINK}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Falar com a Pousada Santo Inácio pelo WhatsApp"
+      >
+        <span aria-hidden="true">☎</span>
+        <strong>WhatsApp</strong>
+      </a>
     </div>
   );
 }

@@ -5,6 +5,8 @@ import ReservationForm from "../components/ReservationForm.jsx";
 const WHATSAPP_RESERVATION_LINK =
   "https://wa.me/5583998710819?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20fazer%20uma%20pr%C3%A9-reserva%20na%20Pousada%20Santo%20In%C3%A1cio.";
 const MAP_LINK = "https://maps.app.goo.gl/vMqn6w6E2WBDL5cR6";
+const MAP_EMBED =
+  "https://www.google.com/maps?q=Pousada%20Santo%20In%C3%A1cio%20Tapero%C3%A1%20PB&output=embed";
 
 export default function Home() {
   return (
@@ -43,7 +45,7 @@ export default function Home() {
 
       <section className="quick-info" aria-label="Informações rápidas">
         <div>
-          <span className="info-icon" aria-hidden="true">◷</span>
+          <span className="info-icon" aria-hidden="true">▷</span>
           <strong>Check-in flexível</strong>
           <span>Praticidade para quem chega da estrada em horários variados.</span>
         </div>
@@ -86,14 +88,25 @@ export default function Home() {
         </div>
 
         <div className="location-grid">
-          <div className="map-card location-map-fallback">
-            <div className="map-pin" aria-hidden="true">⌖</div>
-            <h3>Pousada Santo Inácio</h3>
-            <p>Posto de combustível em Taperoá - PB</p>
-            <span>Toque no botão abaixo para abrir a rota no Google Maps.</span>
-            <a className="primary-button" href={MAP_LINK} target="_blank" rel="noreferrer">
-              Abrir Rota no Google Maps
-            </a>
+          <div className="map-card">
+            <iframe
+              className="map-embed"
+              title="Mapa da Pousada Santo Inácio em Taperoá PB"
+              src={MAP_EMBED}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+
+            <div className="location-map-fallback">
+              <div className="map-pin" aria-hidden="true">⌖</div>
+              <h3>Pousada Santo Inácio</h3>
+              <p>Posto de combustível em Taperoá - PB</p>
+              <span>Toque no botão abaixo para abrir a rota no Google Maps.</span>
+              <a className="primary-button" href={MAP_LINK} target="_blank" rel="noreferrer">
+                Abrir Rota no Google Maps
+              </a>
+            </div>
           </div>
 
           <div className="location-copy glass-panel">
