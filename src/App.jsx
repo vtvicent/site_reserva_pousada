@@ -5,13 +5,15 @@ import Rooms from "./pages/Rooms.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 
-const FLOATING_WHATSAPP_LINK =
-  "https://wa.me/5583998710819?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20falar%20com%20a%20Pousada%20Santo%20In%C3%A1cio%20sobre%20hospedagem.";
+const WHATSAPP_NUMBER = "5583998710819";
+const FLOATING_WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Olá! Tudo bem? Gostaria de consultar disponibilidade na Pousada Santo Inácio."
+)}`;
 
 const navItems = [
   { to: "/", label: "Início" },
   { to: "/quartos", label: "Quartos" },
-  { to: "/#localizacao", label: "Localização da Pousada" },
+  { to: "/#localizacao", label: "Localização" },
   { to: "/sobre", label: "Sobre" },
   { to: "/contato", label: "Contato" },
 ];
@@ -54,7 +56,7 @@ export default function App() {
     <div className="app-shell" data-theme={theme}>
       <header className="site-header">
         <NavLink to="/" className="brand" aria-label="Pousada Santo Inácio">
-          <img src="/santo-inacio-logo.png" alt="" />
+          <img src="/santo-inacio-logo.png" alt="Logo da Pousada Santo Inácio" />
           <span>
             <strong>Pousada Santo Inácio</strong>
             <small>Taperoá - PB</small>
@@ -105,14 +107,24 @@ export default function App() {
       </main>
 
       <footer className="site-footer">
-        <div>
-          <strong>Pousada Santo Inácio</strong>
-          <span>Hospedagem simples, segura e estratégica em Taperoá - PB.</span>
+        <div className="footer-brand">
+          <img src="/santo-inacio-logo.png" alt="Logo da Pousada Santo Inácio" />
+          <div>
+            <strong>Pousada Santo Inácio</strong>
+            <span>Hospedagem simples, segura e estratégica em Taperoá - PB.</span>
+          </div>
         </div>
-        <div>
+        <nav className="footer-links" aria-label="Links do rodapé">
+          <NavLink to="/">Início</NavLink>
+          <NavLink to="/quartos">Quartos</NavLink>
+          <NavLink to="/#localizacao">Como chegar</NavLink>
+          <NavLink to="/contato">Contato</NavLink>
+        </nav>
+        <div className="footer-contact">
           <span>WhatsApp: (83) 99871-0819</span>
           <span>Endereço: posto de combustível em Taperoá - PB</span>
-          <span>CNPJ: disponível no atendimento</span>
+          <a href={FLOATING_WHATSAPP_LINK} target="_blank" rel="noreferrer">Reservar pelo WhatsApp</a>
+          <span>Instagram: informe o perfil oficial para adicionar o link</span>
         </div>
       </footer>
 
@@ -121,10 +133,10 @@ export default function App() {
         href={FLOATING_WHATSAPP_LINK}
         target="_blank"
         rel="noreferrer"
-        aria-label="Falar com a Pousada Santo Inácio pelo WhatsApp"
+        aria-label="Consultar disponibilidade pelo WhatsApp"
       >
         <span aria-hidden="true">☎</span>
-        <strong>WhatsApp</strong>
+        <strong>Consultar</strong>
       </a>
     </div>
   );

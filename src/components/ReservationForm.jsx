@@ -25,17 +25,16 @@ function getToday() {
 function buildMessage(form) {
   return [
     "Olá! Tudo bem?",
-    "Gostaria de fazer uma pré-reserva na Pousada Santo Inácio.",
+    "Gostaria de consultar disponibilidade para hospedagem na Pousada Santo Inácio.",
     "",
     `Nome: ${form.name || "Não informado"}`,
     `Entrada: ${formatDate(form.checkIn) || "Não informada"}`,
     `Saída: ${formatDate(form.checkOut) || "Não informada"}`,
     `Pessoas: ${form.guests || "Não informado"}`,
     `Quarto: ${form.room || "A combinar"}`,
-    `Mensagem: ${form.message || "Tenho interesse em confirmar disponibilidade, valor e melhor opção de quarto para esse período."}`,
+    `Mensagem: ${form.message || "Pode me informar a disponibilidade, o valor final e a melhor opção de quarto para esse período?"}`,
     "",
-    "Fico no aguardo da confirmação.",
-    "Muito obrigado pela atenção!",
+    "Fico no aguardo da confirmação. Obrigado pela atenção!",
   ].join("\n");
 }
 
@@ -77,44 +76,19 @@ export default function ReservationForm({ selectedRoom = "" }) {
       <div className="form-grid">
         <div className="form-row">
           <label htmlFor="checkIn">Check-in</label>
-          <input
-            id="checkIn"
-            name="checkIn"
-            type="date"
-            min={today}
-            value={form.checkIn}
-            onChange={handleChange}
-            required
-          />
+          <input id="checkIn" name="checkIn" type="date" min={today} value={form.checkIn} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
           <label htmlFor="checkOut">Check-out</label>
-          <input
-            id="checkOut"
-            name="checkOut"
-            type="date"
-            min={form.checkIn || today}
-            value={form.checkOut}
-            onChange={handleChange}
-            required
-          />
+          <input id="checkOut" name="checkOut" type="date" min={form.checkIn || today} value={form.checkOut} onChange={handleChange} required />
         </div>
       </div>
 
       <div className="form-grid">
         <div className="form-row">
           <label htmlFor="guests">Número de pessoas</label>
-          <input
-            id="guests"
-            name="guests"
-            type="number"
-            min="1"
-            max="6"
-            value={form.guests}
-            onChange={handleChange}
-            required
-          />
+          <input id="guests" name="guests" type="number" min="1" max="6" value={form.guests} onChange={handleChange} required />
         </div>
 
         <div className="form-row">
@@ -144,7 +118,7 @@ export default function ReservationForm({ selectedRoom = "" }) {
 
       <button className="primary-button full" type="submit">
         <span className="button-icon" aria-hidden="true">☎</span>
-        Reservar agora pelo WhatsApp
+        Consultar pelo WhatsApp
       </button>
 
       <p className="form-note">Pré-reserva sem cadastro. A confirmação é feita diretamente pelo WhatsApp.</p>

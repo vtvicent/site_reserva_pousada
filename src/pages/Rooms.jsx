@@ -39,7 +39,7 @@ export default function Rooms() {
         ))}
       </section>
 
-      <section className="content-band two-columns">
+      <section className="content-band two-columns reservation-section">
         <div>
           <p className="eyebrow">Consulta rápida</p>
           <h2>Escolha um quarto ou solicite a melhor opção disponível.</h2>

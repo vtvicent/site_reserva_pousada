@@ -4,6 +4,10 @@ import React from "react";
 export default function RoomCard({ room }) {
   return (
     <article className="room-card">
+      <div className="room-card-visual">
+        <img src="/santo-inacio-logo.png" alt={`Identidade visual da Pousada Santo Inácio no ${room.name}`} />
+        <span>Quarto {room.id}</span>
+      </div>
       <div className="room-card-top">
         <span className="room-number">{room.id}</span>
         <span className="status-pill available">Disponível</span>
@@ -20,7 +24,7 @@ export default function RoomCard({ room }) {
       </div>
       <strong className="room-tag">{room.tag}</strong>
       <Link className="secondary-button" to={`/contato?quarto=${room.id}`}>
-        Reservar este quarto
+        Reservar
       </Link>
     </article>
   );

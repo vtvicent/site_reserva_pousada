@@ -3,10 +3,39 @@ import React from "react";
 import ReservationForm from "../components/ReservationForm.jsx";
 
 const WHATSAPP_RESERVATION_LINK =
-  "https://wa.me/5583998710819?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20fazer%20uma%20pr%C3%A9-reserva%20na%20Pousada%20Santo%20In%C3%A1cio.";
+  "https://wa.me/5583998710819?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20consultar%20disponibilidade%20na%20Pousada%20Santo%20In%C3%A1cio.";
+const COMPANY_WHATSAPP_LINK =
+  "https://wa.me/5583998710819?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20hospedagem%20de%20empresa%20ou%20equipe%20na%20Pousada%20Santo%20In%C3%A1cio.";
 const MAP_LINK = "https://maps.app.goo.gl/vMqn6w6E2WBDL5cR6";
 const MAP_EMBED =
   "https://www.google.com/maps?q=Pousada%20Santo%20In%C3%A1cio%20Tapero%C3%A1%20PB&output=embed";
+
+const benefits = [
+  ["Localização estratégica", "Em posto de combustível, facilitando a chegada e a saída."],
+  ["Estacionamento", "Acesso prático para veículos grandes e viajantes em trânsito."],
+  ["Conforto essencial", "Quartos simples, arejados e pensados para uma boa noite de descanso."],
+  ["Atendimento direto", "Consulta de disponibilidade e confirmação pelo WhatsApp."],
+  ["Para viajantes", "Uma parada objetiva para quem está seguindo viagem pelo Cariri."],
+  ["Para empresas", "Hospedagem para equipes terceirizadas e contratos recorrentes."],
+];
+
+const galleryImages = [
+  {
+    src: "/hero-pousada-real.png",
+    alt: "Fachada e posto onde fica localizada a Pousada Santo Inácio em Taperoá PB",
+    label: "Localização da pousada",
+  },
+  {
+    src: "/hero-pousada-destaque.webp",
+    alt: "Banner da Pousada Santo Inácio com identidade visual em vermelho e dourado",
+    label: "Identidade visual",
+  },
+  {
+    src: "/santo-inacio-logo.png",
+    alt: "Logo da Pousada Santo Inácio",
+    label: "Marca da pousada",
+  },
+];
 
 export default function Home() {
   return (
@@ -14,20 +43,20 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <div className="hero-copy">
+            <p className="eyebrow">Hospedagem em Taperoá-PB</p>
             <div className="hero-brand-title" aria-label="Pousada Santo Inácio">
               <span className="halo-mark" aria-hidden="true" />
               <span className="brand-kicker">Pousada</span>
-              <span className="brand-main">Santo Inácio</span>
-              <span className="brand-location">Taperoá - Paraíba</span>
-              <span className="brand-subtitle">Comodidade e preço baixo 24h pertinho de você.</span>
+              <h1 className="brand-main">Santo Inácio</h1>
+              <span className="brand-location">Taperoá - PB</span>
+              <span className="brand-subtitle">Comodidade e preço justo para quem está em trânsito.</span>
             </div>
             <p>
-              Uma opção prática para viajantes em trânsito, caminhoneiros,
-              trabalhadores regionais e equipes terceirizadas que precisam de
-              descanso limpo, localização estratégica e atendimento ágil.
+              Hospedagem simples, segura e sem burocracia para viajantes,
+              caminhoneiros, trabalhadores regionais e equipes terceirizadas.
             </p>
             <div className="hero-actions">
-              <a className="primary-button" href="#reserva">
+              <a className="primary-button hero-primary" href={WHATSAPP_RESERVATION_LINK} target="_blank" rel="noreferrer">
                 <span className="button-icon" aria-hidden="true">☎</span>
                 Reservar pelo WhatsApp
               </a>
@@ -36,45 +65,75 @@ export default function Home() {
               </Link>
             </div>
             <div className="hero-badges" aria-label="Diferenciais da pousada">
-              <span>Atendimento direto com o proprietário</span>
+              <span>Atendimento direto</span>
               <span>Localização em posto de combustível</span>
+              <span>Ideal para viajantes e empresas</span>
             </div>
           </div>
+
+          <aside className="hero-reservation-card" aria-label="Consulta rápida pelo WhatsApp">
+            <strong>Pré-reserva rápida</strong>
+            <span>Informe datas, pessoas e quarto desejado. A confirmação é feita pelo atendimento.</span>
+            <a className="primary-button full" href="#reserva">Consultar disponibilidade</a>
+          </aside>
         </div>
       </section>
 
-      <section className="quick-info" aria-label="Informações rápidas">
-        <div>
-          <span className="info-icon" aria-hidden="true">▷</span>
-          <strong>Check-in flexível</strong>
-          <span>Praticidade para quem chega da estrada em horários variados.</span>
+      <section className="quick-info benefits-grid" aria-label="Benefícios da pousada">
+        {benefits.map(([title, text]) => (
+          <div key={title}>
+            <span className="info-icon" aria-hidden="true">✓</span>
+            <strong>{title}</strong>
+            <span>{text}</span>
+          </div>
+        ))}
+      </section>
+
+      <section className="gallery-section" aria-labelledby="gallery-title">
+        <div className="section-title-row">
+          <div>
+            <p className="eyebrow">Galeria</p>
+            <h2 id="gallery-title">Conheça a identidade e a localização da pousada.</h2>
+          </div>
+          <a className="text-link dark-link" href={WHATSAPP_RESERVATION_LINK} target="_blank" rel="noreferrer">
+            Falar com a pousada
+          </a>
         </div>
-        <div>
-          <span className="info-icon" aria-hidden="true">▰</span>
-          <strong>Estacionamento amplo</strong>
-          <span>Localização conveniente em posto, com acesso fácil para veículos grandes.</span>
+        <div className="gallery-grid">
+          {galleryImages.map((image) => (
+            <figure key={image.src} className="gallery-card">
+              <img src={image.src} alt={image.alt} loading="lazy" />
+              <figcaption>{image.label}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
-      <section className="business-band">
+      <section className="business-band company-section">
         <div>
-          <p className="eyebrow">Para empresas</p>
-          <h2>Hospedagem para equipes terceirizadas e contratos recorrentes.</h2>
+          <p className="eyebrow">Hospedagem para empresas</p>
+          <h2>Estadia prática para equipes terceirizadas e contratos recorrentes.</h2>
         </div>
-        <p>
-          Atendemos trabalhadores em deslocamento, equipes de obras, prestadores
-          de serviço e empresas que precisam de hospedagem simples, previsível e
-          com atendimento direto.
-        </p>
+        <div>
+          <p>
+            Atendemos trabalhadores em deslocamento, equipes de obras, prestadores
+            de serviço e empresas que precisam de hospedagem simples, previsível e
+            com atendimento direto.
+          </p>
+          <a className="primary-button company-button" href={COMPANY_WHATSAPP_LINK} target="_blank" rel="noreferrer">
+            Solicitar orçamento
+          </a>
+        </div>
       </section>
 
-      <section id="reserva" className="content-band two-columns">
+      <section id="reserva" className="content-band two-columns reservation-section">
         <div>
-          <p className="eyebrow">Pré-reserva rápida</p>
+          <p className="eyebrow">Reservas</p>
           <h2>Envie os dados da hospedagem pelo WhatsApp.</h2>
           <p>
-            Ao enviar o formulário, o WhatsApp será aberto com uma mensagem pronta
-            para a pousada confirmar disponibilidade, valores e condições.
+            O formulário abre uma mensagem pronta no WhatsApp para a pousada
+            confirmar disponibilidade, valores e condições. Nenhuma reserva é
+            salva automaticamente no site.
           </p>
         </div>
         <ReservationForm />
@@ -82,9 +141,9 @@ export default function Home() {
 
       <section id="localizacao" className="location-tourism-section">
         <div className="section-heading">
-          <p className="eyebrow">Localização e conheça Taperoá</p>
+          <p className="eyebrow">Localização</p>
           <h2>Onde Estamos</h2>
-          <p>Localização estratégica no coração do Cariri Paraibano</p>
+          <p>Taperoá-PB, no coração do Cariri Paraibano.</p>
         </div>
 
         <div className="location-grid">
@@ -104,7 +163,7 @@ export default function Home() {
               <p>Posto de combustível em Taperoá - PB</p>
               <span>Toque no botão abaixo para abrir a rota no Google Maps.</span>
               <a className="primary-button" href={MAP_LINK} target="_blank" rel="noreferrer">
-                Abrir Rota no Google Maps
+                Como chegar
               </a>
             </div>
           </div>
@@ -121,72 +180,9 @@ export default function Home() {
               comerciais, equipes de trabalho e turistas que desejam uma parada
               estratégica em Taperoá-PB.
             </p>
-            <a className="text-link" href={MAP_LINK} target="_blank" rel="noreferrer">
-              Abrir localização no Google Maps
+            <a className="primary-button map-button" href={MAP_LINK} target="_blank" rel="noreferrer">
+              Como chegar
             </a>
-          </div>
-        </div>
-
-        <div className="taperoa-panel">
-          <div className="taperoa-copy glass-panel">
-            <p className="eyebrow">Conheça Taperoá - PB</p>
-            <h2>Descubra Taperoá, o coração cultural do Cariri Paraibano</h2>
-            <p>
-              Localizada no coração do Cariri Paraibano, Taperoá é um destino
-              que reúne cultura, história, tradição e as belas paisagens do
-              sertão nordestino.
-            </p>
-            <p>
-              Reconhecida como uma das cidades mais importantes da cultura
-              paraibana, Taperoá possui forte ligação com o escritor Ariano
-              Suassuna, autor de obras consagradas como O Auto da Compadecida e
-              A Pedra do Reino. A cidade serviu de inspiração para diversos
-              cenários e elementos presentes em suas histórias, tornando-se
-              referência para admiradores da literatura e da cultura nordestina.
-            </p>
-            <p>
-              Seu centro histórico preserva construções tradicionais, igrejas,
-              praças e espaços culturais que ajudam a contar a trajetória do
-              povo sertanejo. Entre os destaques está o Memorial Ariano Suassuna
-              e os roteiros turísticos inspirados em sua obra.
-            </p>
-            <p>
-              Taperoá também mantém vivas as tradições populares através do
-              forró, repentistas, violeiros, grupos folclóricos, apresentações
-              culturais e festas que celebram a identidade do sertão. A
-              gastronomia regional encanta visitantes com pratos típicos como
-              carne de sol, rubacão, buchada e outras especialidades nordestinas.
-            </p>
-            <p>
-              Além da riqueza cultural, a cidade oferece tranquilidade,
-              hospitalidade e paisagens marcantes da caatinga paraibana. O pôr
-              do sol sertanejo, a simplicidade acolhedora do povo e o clima
-              autêntico fazem de Taperoá um destino ideal para quem deseja viver
-              experiências genuínas no Nordeste.
-            </p>
-          </div>
-
-          <div className="tourism-cards">
-            <article className="tourism-card">
-              <span>📖</span>
-              <h3>Terra de Ariano Suassuna</h3>
-              <p>Berço cultural que inspirou grandes obras da literatura brasileira.</p>
-            </article>
-            <article className="tourism-card">
-              <span>🎭</span>
-              <h3>Cultura Nordestina</h3>
-              <p>Tradições populares, música, dança e manifestações folclóricas.</p>
-            </article>
-            <article className="tourism-card">
-              <span>🌅</span>
-              <h3>Beleza do Sertão</h3>
-              <p>Paisagens únicas do Cariri Paraibano e pôr do sol inesquecível.</p>
-            </article>
-            <article className="tourism-card">
-              <span>🍴</span>
-              <h3>Gastronomia Regional</h3>
-              <p>Sabores autênticos da culinária típica nordestina.</p>
-            </article>
           </div>
         </div>
 
